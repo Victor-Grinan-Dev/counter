@@ -1,0 +1,8 @@
+header{
+    background-color:cadetblue;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 70px;
+  }

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import Button from "./Button";
-import './App.css';
 import { render } from "@testing-library/react";
 
 class Main extends Component {
     state = {
-        likes: 10
+        likes: 0
     }
 
     addOne = () => {
@@ -23,15 +22,19 @@ class Main extends Component {
 
     subOne = () => {
         console.log("something");
-        this.setState({
-            likes: this.state.likes - 1
-        })
+        if (this.state.likes > 0){
+            this.setState({
+                likes: this.state.likes - 1
+            })
+        }
     }
     subfive = () => {
-        console.log("something");
-        this.setState({
-            likes: this.state.likes - 5
-        })
+        if (this.state.likes >= 5){
+            this.setState({
+                likes: this.state.likes - 5 
+            }
+            )
+        }
     }
 
     reset = () => {
@@ -42,19 +45,29 @@ class Main extends Component {
     }
 
     render(){
+        let allClasess = "circle";
+        
+        if (this.state.likes === 0){
+
+        }else if (this.state.likes % 2 === 1){
+            allClasess += " odd";
+        }else if(this.state.likes % 2 === 0){
+            allClasess += " even";
+        }
+
         return (
             <div className="main">
                 <h1>Likes</h1>
-                <div className="circle">
+                <div className={allClasess}>
                     <h1>{this.state.likes}</h1>
                 </div>
 
                 <div className="buttons">
-                    <button onClick={this.addOne}>add one</button>
-                    <button onClick={this.addfive}>add five</button>
-                    <button onClick={this.reset}>Reset</button>
-                    <button onClick={this.subOne}>sub one</button>
-                    <button onClick={this.subfive}>sub five</button>
+                    <Button click={this.addOne} value="add one"/>
+                    <Button click={this.addfive} value="add five"/>
+                    <Button click={this.reset} value="Reset"/>
+                    <Button click={this.subOne} value="sub one"/>
+                    <Button click={this.subfive} value="sub five"/>
                 </div>
             </div>   
         )
