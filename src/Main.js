@@ -44,7 +44,7 @@ class Main extends Component {
     render(){
         return (
             <div className="main">
-            
+                <h1>Likes</h1>
                 <div className="circle">
                     <h1>{this.state.likes}</h1>
                 </div>
